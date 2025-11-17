@@ -14,6 +14,389 @@ export type Database = {
   }
   public: {
     Tables: {
+      assets: {
+        Row: {
+          asset_type: string | null
+          created_at: string | null
+          current_value: number | null
+          depreciation_method: string | null
+          id: number
+          name: string
+          purchase_date: string
+          purchase_price: number
+          salvage_value: number | null
+          status: string | null
+          tenant_id: number
+          updated_at: string | null
+          useful_life_years: number | null
+        }
+        Insert: {
+          asset_type?: string | null
+          created_at?: string | null
+          current_value?: number | null
+          depreciation_method?: string | null
+          id?: never
+          name: string
+          purchase_date: string
+          purchase_price: number
+          salvage_value?: number | null
+          status?: string | null
+          tenant_id: number
+          updated_at?: string | null
+          useful_life_years?: number | null
+        }
+        Update: {
+          asset_type?: string | null
+          created_at?: string | null
+          current_value?: number | null
+          depreciation_method?: string | null
+          id?: never
+          name?: string
+          purchase_date?: string
+          purchase_price?: number
+          salvage_value?: number | null
+          status?: string | null
+          tenant_id?: number
+          updated_at?: string | null
+          useful_life_years?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assets_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_contacts: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string | null
+          id: number
+          name: string
+          phone: string | null
+          status: string | null
+          tenant_id: number
+          updated_at: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: never
+          name: string
+          phone?: string | null
+          status?: string | null
+          tenant_id: number
+          updated_at?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: never
+          name?: string
+          phone?: string | null
+          status?: string | null
+          tenant_id?: number
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_contacts_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_deals: {
+        Row: {
+          amount: number | null
+          created_at: string | null
+          currency: string | null
+          expected_close_date: string | null
+          id: number
+          lead_id: number | null
+          owner_id: string | null
+          stage: string | null
+          tenant_id: number
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          amount?: number | null
+          created_at?: string | null
+          currency?: string | null
+          expected_close_date?: string | null
+          id?: never
+          lead_id?: number | null
+          owner_id?: string | null
+          stage?: string | null
+          tenant_id: number
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number | null
+          created_at?: string | null
+          currency?: string | null
+          expected_close_date?: string | null
+          id?: never
+          lead_id?: number | null
+          owner_id?: string | null
+          stage?: string | null
+          tenant_id?: number
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_deals_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "crm_leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "crm_deals_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      crm_leads: {
+        Row: {
+          assigned_to: string | null
+          company: string | null
+          created_at: string | null
+          created_by: string
+          email: string | null
+          id: number
+          name: string
+          phone: string | null
+          source: string | null
+          status: string | null
+          tenant_id: number
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          company?: string | null
+          created_at?: string | null
+          created_by: string
+          email?: string | null
+          id?: never
+          name: string
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          tenant_id: number
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          company?: string | null
+          created_at?: string | null
+          created_by?: string
+          email?: string | null
+          id?: never
+          name?: string
+          phone?: string | null
+          source?: string | null
+          status?: string | null
+          tenant_id?: number
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_leads_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      depreciation_entries: {
+        Row: {
+          asset_id: number
+          created_at: string | null
+          depreciation_amount: number
+          id: number
+          period_date: string
+          tenant_id: number
+        }
+        Insert: {
+          asset_id: number
+          created_at?: string | null
+          depreciation_amount: number
+          id?: never
+          period_date: string
+          tenant_id: number
+        }
+        Update: {
+          asset_id?: number
+          created_at?: string | null
+          depreciation_amount?: number
+          id?: never
+          period_date?: string
+          tenant_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "depreciation_entries_asset_id_fkey"
+            columns: ["asset_id"]
+            isOneToOne: false
+            referencedRelation: "assets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "depreciation_entries_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      inventory_items: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          description: string | null
+          id: number
+          name: string
+          quantity_on_hand: number | null
+          reorder_level: number | null
+          sku: string | null
+          tenant_id: number
+          unit_cost: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: never
+          name: string
+          quantity_on_hand?: number | null
+          reorder_level?: number | null
+          sku?: string | null
+          tenant_id: number
+          unit_cost?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: never
+          name?: string
+          quantity_on_hand?: number | null
+          reorder_level?: number | null
+          sku?: string | null
+          tenant_id?: number
+          unit_cost?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inventory_items_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      inventory_stock: {
+        Row: {
+          id: number
+          item_id: number
+          last_counted: string | null
+          quantity: number | null
+          tenant_id: number
+          warehouse_id: number
+        }
+        Insert: {
+          id?: never
+          item_id: number
+          last_counted?: string | null
+          quantity?: number | null
+          tenant_id: number
+          warehouse_id: number
+        }
+        Update: {
+          id?: never
+          item_id?: number
+          last_counted?: string | null
+          quantity?: number | null
+          tenant_id?: number
+          warehouse_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inventory_stock_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "inventory_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "inventory_stock_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "inventory_stock_warehouse_id_fkey"
+            columns: ["warehouse_id"]
+            isOneToOne: false
+            referencedRelation: "inventory_warehouses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      inventory_warehouses: {
+        Row: {
+          created_at: string | null
+          id: number
+          location: string | null
+          name: string
+          tenant_id: number
+        }
+        Insert: {
+          created_at?: string | null
+          id?: never
+          location?: string | null
+          name: string
+          tenant_id: number
+        }
+        Update: {
+          created_at?: string | null
+          id?: never
+          location?: string | null
+          name?: string
+          tenant_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inventory_warehouses_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -84,6 +467,53 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      tickets: {
+        Row: {
+          assigned_to: string | null
+          created_at: string | null
+          description: string | null
+          id: number
+          priority: string | null
+          reporter_id: string | null
+          status: string | null
+          tenant_id: number
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: never
+          priority?: string | null
+          reporter_id?: string | null
+          status?: string | null
+          tenant_id: number
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: never
+          priority?: string | null
+          reporter_id?: string | null
+          status?: string | null
+          tenant_id?: number
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tickets_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
