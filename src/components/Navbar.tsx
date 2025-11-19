@@ -1,19 +1,50 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold text-primary">
-          AppMaster
-        </Link>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-8">
+          <Link to="/" className="text-2xl font-bold text-foreground flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center text-primary-foreground font-bold">
+              A
+            </div>
+            AppMaster
+          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
+              Products <ChevronDown className="w-4 h-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              <DropdownMenuItem asChild>
+                <Link to="/crm">CRM</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/inventory">Inventory</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/invoicing">Invoicing</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/assets">Assets</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="flex gap-3">
           <Link to="/login">
-            <Button variant="ghost">Login</Button>
+            <Button variant="ghost" size="default">Sign In</Button>
           </Link>
           <Link to="/login">
-            <Button>Get Started</Button>
+            <Button size="default">Start Free</Button>
           </Link>
         </div>
       </div>
