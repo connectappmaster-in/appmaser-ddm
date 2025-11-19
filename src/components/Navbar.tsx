@@ -7,15 +7,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import logoImage from "@/assets/appmaster-logo.png";
+import logoImage from "@/assets/appmaster-logo-full.png";
 
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
-      <div className="container mx-auto px-3 md:px-4 py-3 md:py-4 flex items-center justify-between">
-        <div className="flex items-center gap-4 md:gap-8">
+      <div className="w-full px-3 sm:px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+        <div className="flex items-center gap-6 lg:gap-8">
           <Link to="/" className="flex items-center">
-            <img src={logoImage} alt="AppMaster" className="h-10 md:h-14 lg:h-16 w-auto" />
+            <img src={logoImage} alt="AppMaster" className="h-12 md:h-16 lg:h-20 w-auto" />
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger className="hidden md:flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">

@@ -4,10 +4,12 @@ import ModuleGrid from "@/components/ModuleGrid";
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full bg-background">
+    <div className="min-h-screen w-full bg-background flex flex-col">
       <Navbar />
-      <Hero />
-      <ModuleGrid />
+      <main className="flex-1">
+        <Hero />
+        <ModuleGrid />
+      </main>
     </div>
   );
 };
