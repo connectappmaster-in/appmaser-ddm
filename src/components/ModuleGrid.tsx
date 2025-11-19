@@ -88,26 +88,26 @@ const modules = [
 
 const ModuleGrid = () => {
   return (
-    <section className="py-12 px-4 pb-24">
+    <section className="py-6 md:py-12 px-4 pb-16 md:pb-24">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {modules.map((module, idx) => (
             <Card key={idx} className="overflow-hidden border-border hover:shadow-lg transition-shadow">
-              <div className="flex">
-                <div className={`${module.categoryClass} w-16 flex items-center justify-center p-4`}>
-                  <span className="writing-mode-vertical text-sm font-semibold tracking-wider">
+              <div className="flex min-h-[120px]">
+                <div className={`${module.categoryClass} w-12 sm:w-14 md:w-16 flex items-center justify-center p-2 md:p-4`}>
+                  <span className="writing-mode-vertical text-xs sm:text-sm font-semibold tracking-wider">
                     {module.category}
                   </span>
                 </div>
-                <div className="flex-1 p-6">
+                <div className="flex-1 p-4 md:p-6">
                   {module.items.map((item, itemIdx) => (
                     <Link
                       key={itemIdx}
                       to={item.path}
-                      className="flex items-center gap-3 py-3 text-foreground hover:text-primary transition-colors group"
+                      className="flex items-center gap-2 md:gap-3 py-2 md:py-3 text-foreground hover:text-primary transition-colors group"
                     >
-                      <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                      <span className="text-sm font-medium">{item.label}</span>
+                      <item.icon className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium">{item.label}</span>
                     </Link>
                   ))}
                 </div>
