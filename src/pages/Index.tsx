@@ -1,19 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Benefits from "@/components/Benefits";
-import Stats from "@/components/Stats";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import ModuleGrid from "@/components/ModuleGrid";
+
 const Index = () => {
-  return <div className="min-h-screen w-full">
+  return (
+    <div className="min-h-screen w-full bg-background">
       <Navbar />
       <Hero />
-      
-      <Features />
-      <Benefits />
-      
-      
-    </div>;
+      <ModuleGrid />
+    </div>
+  );
 };
+
 export default Index;
