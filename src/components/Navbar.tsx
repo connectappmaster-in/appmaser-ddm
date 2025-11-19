@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="container mx-auto px-3 md:px-4 py-3 md:py-4 flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-8">
           <Link to="/" className="flex items-center">
-            <img src={logoImage} alt="AppMaster" className="h-8 md:h-12 w-auto" />
+            <img src={logoImage} alt="AppMaster" className="h-10 md:h-14 lg:h-16 w-auto" />
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger className="hidden md:flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
